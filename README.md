@@ -1,58 +1,71 @@
-# Customer Lifetime Value Prediction & LTV Segmentation
+Voici la traduction en français de ton texte :
 
-### Objective: 
-We have to predict the customer's lifetime value and segment the customers based on their LTV so that we can provide this information to the marketing team for the campaign & CPA optimization.
+---
 
-### Introduction:
-The dataset which we are going to use in this problem has taken from the UCI Machine Learning Repository. This is a transactional data set which contains all the actual transactions for a UK-based and registered ecommerce online retail store. The company mainly sells unique all-occasion gifts. This dataset has several features which includes the Invoice Number, Stock Code, Product Description, Product Quantity, Invoice Date, Unit Price, Customer ID, etc.
+# Prédiction de la Valeur Vie Client (CLV) & Segmentation par LTV
 
-Before starting with the model, let's first understand what is Customer Lifetime Value.
+### Objectif :
 
-![Customer Lifetime Value Prediction](https://neilpatel.com/wp-content/uploads/2018/05/facebook-lifetime-value.jpg)
+Nous devons prédire la valeur vie du client (Customer Lifetime Value - CLV) et segmenter les clients selon leur LTV afin de fournir ces informations à l’équipe marketing pour optimiser les campagnes et le coût par acquisition (CPA).
 
-### Abstract
+### Introduction :
 
-**What is Customer Lifetime Value?**
+Le jeu de données utilisé pour ce projet provient du **UCI Machine Learning Repository**. Il s’agit de données transactionnelles issues d’un site e-commerce britannique. L’entreprise vend principalement des cadeaux uniques pour toutes occasions. Le dataset comprend plusieurs variables : numéro de facture, code produit, description, quantité, date de la commande, prix unitaire, ID client, etc.
 
-[Customer lifetime value](https://en.wikipedia.org/wiki/Customer_lifetime_value) (CLV) is one of the key stats likely to be tracked as part of a customer experience program. CLV is a measurement of how valuable a customer is to your company with an unlimited time span as opposed to just the first purchase. This metric helps you understand a reasonable cost per acquisition.
-CLV is the total worth to a business of a customer over the whole period of their relationship. It’s an important metric as it costs less to keep existing customers than it does to acquire new ones, so increasing the value of your existing customers is a great way to drive growth.
+Avant de commencer la modélisation, comprenons d'abord ce qu’est la **valeur vie client (CLV)**.
 
-**Challenges -** 
-Some companies don’t attempt to measure CLV, citing the challenges of segregated teams, inadequate systems, and untargeted marketing.
+![Prédiction de la Valeur Vie Client](https://neilpatel.com/wp-content/uploads/2018/05/facebook-lifetime-value.jpg)
 
-**Why is it important to track customer lifetime value?**
+### Résumé
 
-CLTV tell marketers, how much revenue they can expect from one customer over the course of the business relationship. The longer a customer continues to purchase from a company, the greater their lifetime value becomes.
+**Qu’est-ce que la Valeur Vie Client (CLV) ?**
 
-To calculate the customer lifetime value, there are several methods available on the internet which you can google but here I am going to share with you the model which I have used and the reason behind choosing that specific model.
+La [valeur vie client (CLV)](https://fr.wikipedia.org/wiki/Valeur_vie_client) est une statistique essentielle dans le cadre d’un programme d’expérience client. Elle mesure la valeur qu’un client représente pour une entreprise sur toute la durée de leur relation, et non seulement lors du premier achat. Cette métrique permet de comprendre le coût raisonnable d’acquisition d’un client.
 
-To create the model first we have to understand the course of business or in short business context and its customer's.
+Le CLV représente donc la valeur totale qu’un client apporte à une entreprise pendant toute la durée de leur relation. C’est un indicateur clé car fidéliser un client existant coûte généralement moins cher que d’en acquérir un nouveau. Augmenter la valeur des clients existants est donc un levier important de croissance.
 
-There are basically two types of business context which I am going to discuss below regards to the relationship and purchase opportunities.
+**Défis —**
+Certaines entreprises ne tentent même pas d’estimer le CLV en raison de la fragmentation des équipes, des systèmes inadéquats ou d’un marketing peu ciblé.
 
-**a) Contractual -** Contractual business refers to the business where there is a definite time when the customer is going to churn or we can say we know when the customer is going to be dropped. This type of customer relationship known as contractual and the customers called the subscription customers. For Ex - Hotstar, Netflix, Amazon Prime Subscription
+**Pourquoi est-il important de suivre le CLV ?**
 
-**b) Non-Contractual -**  In the non-contractual world, customers do go away, but they do so silently; they have no need to tell us they are leaving. This makes for a much trickier CLV calculation. For Ex- Retail/E-Commerce
+Le CLV aide les marketeurs à estimer le chiffre d'affaires potentiel qu’un client peut générer tout au long de sa relation avec l’entreprise. Plus cette relation dure, plus la valeur client augmente.
 
-![Business Context](https://2zzm8x3dsugfsdli13ukukea-wpengine.netdna-ssl.com/wp-content/uploads/hardie_non_contract_continuous.png)
+Pour calculer le CLV, plusieurs méthodes existent en ligne, mais ici, je vais vous présenter le modèle que j’ai choisi et les raisons de ce choix.
 
-**Purchase Opportunities Types:**
+Avant de modéliser, il est crucial de comprendre le **contexte business** ainsi que les comportements des clients.
 
-**a) Continuous -** It refers the purchase opportunites when there is continuous purchases done by the customers.
+Il existe deux grands types de contextes commerciaux, en fonction de la relation client et des opportunités d’achat :
 
-**b) Discrete -** Under discrete, the purchase happened on a specific time period. For Ex- Subscription Plan
+**a) Contractuel —** Ici, on sait précisément quand un client va partir. Ce type de relation est appelé *contractuelle*, et les clients sont dits *abonnés*.
+Exemples : Hotstar, Netflix, Amazon Prime.
 
-So based on the above, we can identify the business context and choose method which is best suited for the case.
+**b) Non-Contractuel —** Les clients partent silencieusement, sans avertissement. Cela rend le calcul du CLV plus complexe.
+Exemples : Retail / E-commerce.
 
-### Purpose of the research
+![Contexte Business](https://2zzm8x3dsugfsdli13ukukea-wpengine.netdna-ssl.com/wp-content/uploads/hardie_non_contract_continuous.png)
 
-Following the problem and motivation described above, the purpose of this study is formulated. The study aims at investigating possible methods with context to the non-contractual-continuous business for estimation of potential revenue (CLV) generated by a certain group of active customers. To perform this estimation, the probabilistic models (Pareto-NBD, BG-NBD, MBG-NBD & Gamma Gamma) has been applied to the case study in the industry. Customer segmentation by means of unsupervised machine learning was also performed in order to show an efficient tool for strategy planning.
+**Types d’opportunités d’achat :**
 
-***Steps Involved in this Project:*** Data Importing | Data Cleaning | Exploratory Data Analysis | Feature Engineering/Extraction | Cross Validation | Different Predictive Models Building | LTV Based Customer Segmentation | Model Evaluation | Model Deployment
+**a) Continue —** Les achats peuvent avoir lieu à tout moment.
 
-***Libraries Used***
+**b) Discrète —** Les achats se font à intervalles définis.
+Exemple : Plans d’abonnement.
 
-a) Scikit Learn
+Selon ce cadre, on peut identifier le bon contexte et choisir la méthode la plus adaptée.
+
+### Objectif de l’étude
+
+Suite au problème et à la motivation évoqués ci-dessus, cette étude vise à explorer différentes méthodes adaptées au contexte *non-contractuel et continu* pour estimer les revenus potentiels (CLV) générés par un groupe de clients actifs.
+
+Pour cette estimation, des **modèles probabilistes** (Pareto-NBD, BG-NBD, MBG-NBD et Gamma-Gamma) ont été appliqués à une étude de cas dans le secteur. Une **segmentation client par apprentissage non supervisé** a également été effectuée pour démontrer un outil efficace de planification stratégique.
+
+***Étapes du projet :***
+Importation des données | Nettoyage des données | Analyse exploratoire | Ingénierie des caractéristiques | Validation croisée | Modélisation prédictive | Segmentation LTV | Évaluation du modèle | Déploiement
+
+***Bibliothèques utilisées :***
+
+a) Scikit-learn
 b) Lifetimes
 c) Plotly, Matplotlib, Seaborn, Altair
 d) XLRD
@@ -63,18 +76,8 @@ h) Datetime
 i) Math
 j) Pickle
 k) Warnings
-6) Streamlit
+l) Streamlit (répété par erreur dans l'original)
 
+**Hébergement & Déploiement du modèle :** Heroku | GitHub | Streamlit
+---
 
-**For Model Hosting & Deployment:** Heroku | Github | Streamlit
-
-*****Miscellaneous:*****
-
-[Midway Report Link](https://github.com/mukulsinghal001/customer-lifetime-prediction-using-python/blob/main/Customer%20Lifetime%20Prediction%20Using%20Probabilistic%20Models%20-%20Midway%20Report.ipynb) | [Attributes TXT File](https://github.com/mukulsinghal001/customer-lifetime-prediction-using-python/blob/main/Online%20Retail%20Dataset%20Attributes%20Info.txt) | [Dataset Link](https://archive.ics.uci.edu/ml/datasets/Online+Retail+II#) | [Baseline Model Results](https://github.com/mukulsinghal001/customer-lifetime-prediction-using-python/blob/main/Predicted%20CLV%20Results.csv)
-
-Final Model is Live Now: https://mukulsinghal001-customer-lifetime-model-de-streamlit-app-t3zaq6.streamlit.app/
-
-
-### Lead Scoring Model Project:
-
-You can also check out my [lead scoring classification prediction model](https://github.com/mukulsinghal001/lead-scoring-model-python) related to marketing analytics as well.
