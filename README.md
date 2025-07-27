@@ -1,5 +1,3 @@
-Voici la traduction en français de ton texte :
-
 ---
 
 # Prédiction de la Valeur Vie Client (CLV) & Segmentation par LTV
